@@ -27,4 +27,7 @@ public class SessionDetails {
     @ManyToOne
     @JoinColumn(name = "session_id")
     private Sessions sessions;
+
+    @OneToOne(mappedBy = "sessionDetails", cascade = CascadeType.ALL)
+    private Certifications certifications;
 }

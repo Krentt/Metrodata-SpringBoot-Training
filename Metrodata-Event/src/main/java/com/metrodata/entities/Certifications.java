@@ -17,4 +17,8 @@ public class Certifications {
 
     @Column(name = "certificate_url", columnDefinition = "TEXT", nullable = false)
     private String certificateUrl;
+
+    @OneToOne
+    @JoinColumn(name = "session_details_id")
+    private SessionDetails sessionDetails;
 }
