@@ -21,6 +21,9 @@ public class Rooms {
     private String name;
 
     // TODO: Foreign key Event_id?
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 
     @OneToMany(mappedBy = "room")
     private List<SessionDetailRooms> sessionDetailRoomsList;
