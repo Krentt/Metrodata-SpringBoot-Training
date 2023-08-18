@@ -33,6 +33,9 @@ public class SessionDetails {
     @OneToOne(mappedBy = "sessionDetails", cascade = CascadeType.ALL)
     private Certifications certifications;
 
-    @OneToMany(mappedBy = "sessionDetails")
+    @OneToMany(mappedBy = "sessionDetails", cascade = CascadeType.ALL)
     private List<SessionDetailRooms> sessionDetailRoomsList;
+
+    @OneToMany(mappedBy = "sessionDetails", cascade = CascadeType.ALL)
+    private List<SessionSpeakers> sessionSpeakersList;
 }
