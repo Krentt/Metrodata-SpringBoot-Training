@@ -36,6 +36,7 @@ public class Participants {
     private String address;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Occupation occupation;
 
     @ManyToOne

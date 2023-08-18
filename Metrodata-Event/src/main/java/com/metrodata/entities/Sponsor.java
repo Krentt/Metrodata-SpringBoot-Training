@@ -26,6 +26,7 @@ public class Sponsor {
     private String logoUrl;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private SponsorCategory category;
 
     @ManyToOne
