@@ -42,4 +42,7 @@ public class Participants {
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
+
+    @OneToMany(mappedBy = "participant", cascade = CascadeType.ALL)
+    private List<SessionRegistrants> sessionRegistrantsList;
 }

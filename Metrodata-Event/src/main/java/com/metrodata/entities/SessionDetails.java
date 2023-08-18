@@ -38,4 +38,7 @@ public class SessionDetails {
 
     @OneToMany(mappedBy = "sessionDetails", cascade = CascadeType.ALL)
     private List<SessionSpeakers> sessionSpeakersList;
+
+    @OneToMany(mappedBy = "sessionDetail", cascade = CascadeType.ALL)
+    private List<SessionRegistrants> sessionRegistrantsList;
 }
