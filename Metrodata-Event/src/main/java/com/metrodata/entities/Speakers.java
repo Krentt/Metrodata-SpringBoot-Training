@@ -1,20 +1,16 @@
 package com.metrodata.entities;
 
-import com.metrodata.entities.enums.SponsorCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "tb_m_sponsors")
-public class Sponsor {
-
+@Table(name = "tb_m_speakers")
+public class Speakers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,16 +19,15 @@ public class Sponsor {
     private String name;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String logoUrl;
+    private String photo_url;
 
-    @Enumerated(EnumType.STRING)
-    private SponsorCategory category;
+    @Column(length = 50, nullable = false)
+    private String jobTitle;
+
+    @Column(length = 100, nullable = false)
+    private String company;
 
     @ManyToOne
-    @JoinColumn(name = "event_id")
-    private Event event;
-
-    @OneToMany(mappedBy = "sponsor", cascade = CascadeType.ALL)
-    private List<Speakers> speakersList;
-
+    @JoinColumn(name = "sponsor")
+    private Sponsor sponsor;
 }
