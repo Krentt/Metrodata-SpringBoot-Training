@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "tb_m_certifications_templates")
+@Table(name = "tb_m_certificate_templates")
 public class Certifications {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
