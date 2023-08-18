@@ -1,5 +1,5 @@
 package com.metrodata.entities.enums;
 
 public enum SponsorCategory {
-    MEGA, GIGA, TERA
+    MEGA, GIGA, TERA, SUPPORT
 }

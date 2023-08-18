@@ -17,7 +17,11 @@ public class Sponsor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 100, nullable = false)
     private String name;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String logoUrl;
 
     @Enumerated(EnumType.STRING)
     private SponsorCategory category;
@@ -25,9 +29,5 @@ public class Sponsor {
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "certificate_id")
-    private Certifications certificate;
 
 }

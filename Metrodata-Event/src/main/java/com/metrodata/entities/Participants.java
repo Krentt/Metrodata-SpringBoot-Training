@@ -1,6 +1,7 @@
 package com.metrodata.entities;
 
 import com.metrodata.entities.enums.Gender;
+import com.metrodata.entities.enums.Occupation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,15 +20,25 @@ public class Participants {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 100, nullable = false)
     private String name;
 
+    @Column(length = 100, nullable = false)
     private String email;
 
+    @Column(length = 100, nullable = false)
     private String university;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @Column(length = 15)
+    private String phoneNumber;
 
-    @ManyToMany(mappedBy = "listParticipants")
-    private List<Event> listEvent;
+    @Column(columnDefinition = "TEXT")
+    private String address;
+
+    @Enumerated(EnumType.STRING)
+    private Occupation occupation;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 }

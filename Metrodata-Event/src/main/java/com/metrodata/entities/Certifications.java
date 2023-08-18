@@ -9,14 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "tb_m_certifications")
+@Table(name = "tb_m_certifications_templates")
 public class Certifications {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String imageUrl;
-
-    @OneToOne(mappedBy = "certificate")
-    private Sponsor sponsor;
+    @Column(name = "certificate_url", columnDefinition = "TEXT", nullable = false)
+    private String certificateUrl;
 }
