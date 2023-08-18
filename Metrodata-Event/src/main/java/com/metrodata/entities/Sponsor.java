@@ -34,6 +34,6 @@ public class Sponsor {
     private Event event;
 
     @OneToMany(mappedBy = "sponsor", cascade = CascadeType.ALL)
-    private List<Speakers> speakersList;
+    private List<Speaker> speakerList;
 
 }

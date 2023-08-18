@@ -6,20 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
-@Table(name = "tb_tr_session_speakers")
-public class SessionSpeakers {
+@Table(name = "tb_tr_session_detail_rooms")
+public class SessionDetailRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "speaker_id")
-    private Speakers speaker;
+    @JoinColumn(name = "room_id")
+    private Room room;
 
     @ManyToOne
     @JoinColumn(name = "session_detail_id")
-    private SessionDetails sessionDetails;
+    private SessionDetail sessionDetail;
 }

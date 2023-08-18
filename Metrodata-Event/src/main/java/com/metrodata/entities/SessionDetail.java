@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Table(name = "tb_m_session_details")
-public class SessionDetails {
+public class SessionDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,17 +28,18 @@ public class SessionDetails {
 
     @ManyToOne
     @JoinColumn(name = "session_id")
-    private Sessions sessions;
+    private Session session;
 
-    @OneToOne(mappedBy = "sessionDetails", cascade = CascadeType.ALL)
-    private Certifications certifications;
-
-    @OneToMany(mappedBy = "sessionDetails", cascade = CascadeType.ALL)
-    private List<SessionDetailRooms> sessionDetailRoomsList;
-
-    @OneToMany(mappedBy = "sessionDetails", cascade = CascadeType.ALL)
-    private List<SessionSpeakers> sessionSpeakersList;
+    @OneToOne(mappedBy = "sessionDetail", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Certificate certificate;
 
     @OneToMany(mappedBy = "sessionDetail", cascade = CascadeType.ALL)
-    private List<SessionRegistrants> sessionRegistrantsList;
+    private List<SessionDetailRoom> sessionDetailRoomList;
+
+    @OneToMany(mappedBy = "sessionDetail", cascade = CascadeType.ALL)
+    private List<SessionSpeaker> sessionSpeakerList;
+
+    @OneToMany(mappedBy = "sessionDetail", cascade = CascadeType.ALL)
+    private List<SessionRegistrant> sessionRegistrantList;
 }

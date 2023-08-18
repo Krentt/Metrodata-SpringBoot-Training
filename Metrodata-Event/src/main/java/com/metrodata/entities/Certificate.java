@@ -10,15 +10,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Table(name = "tb_m_certificate_templates")
-public class Certifications {
+public class Certificate {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "certificate_url", columnDefinition = "TEXT", nullable = false)
     private String certificateUrl;
 
     @OneToOne
-    @JoinColumn(name = "session_details_id")
-    private SessionDetails sessionDetails;
+    @MapsId
+    @JoinColumn(name = "id", nullable = false)
+    private SessionDetail sessionDetail;
 }

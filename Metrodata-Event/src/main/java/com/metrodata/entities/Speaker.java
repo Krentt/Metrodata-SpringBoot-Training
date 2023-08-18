@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Table(name = "tb_m_speakers")
-public class Speakers {
+public class Speaker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,5 +34,5 @@ public class Speakers {
     private Sponsor sponsor;
 
     @OneToMany(mappedBy = "speaker")
-    private List<SessionSpeakers> sessionSpeakersList;
+    private List<SessionSpeaker> sessionSpeakerList;
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_m_sessions")
-public class Sessions {
+public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,6 +37,6 @@ public class Sessions {
     @JoinColumn(name = "event_id")
     private Event event;
 
-    @OneToMany(mappedBy = "sessions", cascade = CascadeType.ALL)
-    private List<SessionDetails> listSessionDetails;
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL)
+    private List<SessionDetail> listSessionDetails;
 }

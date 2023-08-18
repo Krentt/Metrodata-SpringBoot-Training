@@ -61,12 +61,12 @@ public class Event {
     private List<Sponsor> sponsorList;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private List<Participants> listParticipants;
+    private List<Participant> listParticipants;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private List<Sessions> listSessions;
+    private List<Session> listSessions;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private List<Rooms> roomsList;
+    private List<Room> roomList;
 
 }

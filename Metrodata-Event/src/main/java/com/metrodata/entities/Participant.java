@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Table(name = "tb_m_participants")
-public class Participants {
+public class Participant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,5 +43,5 @@ public class Participants {
     private Event event;
 
     @OneToMany(mappedBy = "participant", cascade = CascadeType.ALL)
-    private List<SessionRegistrants> sessionRegistrantsList;
+    private List<SessionRegistrant> sessionRegistrantList;
 }

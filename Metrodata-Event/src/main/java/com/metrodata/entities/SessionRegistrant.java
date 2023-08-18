@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_tr_session_registrants")
-public class SessionRegistrants {
+public class SessionRegistrant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,8 +21,8 @@ public class SessionRegistrants {
     @Column(name = "attended_at")
     private LocalDateTime attendedAt;
 
-    @Column(name = "is_attended", columnDefinition = "TINYINT")
-    private Integer isAttended;
+    @Column(name = "is_attended")
+    private Boolean isAttended;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -31,16 +31,16 @@ public class SessionRegistrants {
     @Column(name = "registered_at", nullable = false)
     private LocalDateTime registeredAt;
 
-    @Column(name = "is_reminder_sent", columnDefinition = "TINYINT", nullable = false)
-    private Integer isReminderSent;
+    @Column(name = "is_reminder_sent", nullable = false)
+    private Boolean isReminderSent;
 
     @ManyToOne
     @JoinColumn(name = "participant_id")
-    private Participants participant;
+    private Participant participant;
 
     @ManyToOne
     @JoinColumn(name = "session_detail_id")
-    private SessionDetails sessionDetail;
+    private SessionDetail sessionDetail;
 
 
 }

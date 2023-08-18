@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Table(name = "tb_m_rooms")
-public class Rooms {
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,5 +25,5 @@ public class Rooms {
     private Event event;
 
     @OneToMany(mappedBy = "room")
-    private List<SessionDetailRooms> sessionDetailRoomsList;
+    private List<SessionDetailRoom> sessionDetailRoomList;
 }
