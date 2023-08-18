@@ -54,8 +54,8 @@ public class Event {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String imageUrl;
 
-    @Column(columnDefinition = "TINYINT", nullable = false)
-    private Integer status;
+    @Column(nullable = false)
+    private Boolean status;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<Sponsor> sponsorList;

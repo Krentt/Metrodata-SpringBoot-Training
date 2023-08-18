@@ -30,8 +30,8 @@ public class Session {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(columnDefinition = "TINYINT", nullable = false)
-    private Integer needAttendance;
+    @Column(nullable = false)
+    private Boolean needAttendance;
 
     @ManyToOne
     @JoinColumn(name = "event_id")
