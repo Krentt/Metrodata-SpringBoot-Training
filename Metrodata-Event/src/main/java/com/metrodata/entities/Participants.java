@@ -1,6 +1,5 @@
 package com.metrodata.entities;
 
-import com.metrodata.entities.enums.Gender;
 import com.metrodata.entities.enums.Occupation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
