@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -35,4 +36,7 @@ public class Sessions {
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
+
+    @OneToMany(mappedBy = "sessions", cascade = CascadeType.ALL)
+    private List<SessionDetails> listSessionDetails;
 }
