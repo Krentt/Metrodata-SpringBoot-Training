@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,4 +32,7 @@ public class SessionDetails {
 
     @OneToOne(mappedBy = "sessionDetails", cascade = CascadeType.ALL)
     private Certifications certifications;
+
+    @OneToMany(mappedBy = "sessionDetails")
+    private List<SessionDetailRooms> sessionDetailRoomsList;
 }
