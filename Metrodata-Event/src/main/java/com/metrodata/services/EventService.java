@@ -20,8 +20,12 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
-    public List<Event> getAllEvent(){
-        return eventRepository.findAll();
+    public ResponseData<List<Event>> getAllEvent(){
+        try {
+            return new ResponseData<>(eventRepository.findAll(), "Fetch all events success!");
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 
     public Event getEventById(Long id){

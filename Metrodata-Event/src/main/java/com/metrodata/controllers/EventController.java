@@ -20,7 +20,7 @@ public class EventController {
     }
 
     @GetMapping
-    public List<Event> getEvents(){
+    public ResponseData<List<Event>> getEvents(){
         return eventService.getAllEvent();
     }
 
