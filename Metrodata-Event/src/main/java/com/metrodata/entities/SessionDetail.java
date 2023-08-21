@@ -1,6 +1,7 @@
 package com.metrodata.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,16 +33,17 @@ public class SessionDetail {
     @JoinColumn(name = "session_id")
     private Session session;
 
+    @JsonManagedReference
     @OneToOne(mappedBy = "sessionDetail", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Certificate certificate;
 
-    @OneToMany(mappedBy = "sessionDetail", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sessionDetail", fetch = FetchType.EAGER)
     private List<SessionDetailRoom> sessionDetailRoomList;
 
-    @OneToMany(mappedBy = "sessionDetail", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sessionDetail", fetch = FetchType.EAGER)
     private List<SessionSpeaker> sessionSpeakerList;
 
-    @OneToMany(mappedBy = "sessionDetail", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sessionDetail", fetch = FetchType.EAGER)
     private List<SessionRegistrant> sessionRegistrantList;
 }

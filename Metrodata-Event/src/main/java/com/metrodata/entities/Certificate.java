@@ -1,5 +1,6 @@
 package com.metrodata.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class Certificate {
     private String certificateUrl;
 
     @OneToOne
+    @JsonBackReference
     @MapsId
     @JoinColumn(name = "id", nullable = false)
     private SessionDetail sessionDetail;

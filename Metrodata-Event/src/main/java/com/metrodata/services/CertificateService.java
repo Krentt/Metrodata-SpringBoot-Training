@@ -2,6 +2,8 @@ package com.metrodata.services;
 
 import com.metrodata.entities.Certificate;
 import com.metrodata.entities.Event;
+import com.metrodata.entities.Participant;
+import com.metrodata.entities.models.ParticipantData;
 import com.metrodata.entities.models.ResponseData;
 import com.metrodata.repositories.CertificateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,14 +33,6 @@ public class CertificateService {
 
     public Certificate getCertificateById(Long id){
         return certificateRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Certificate not found"));
-    }
-
-    public ResponseData<Certificate> insertCertificate(Certificate certificate) {
-        try {
-            return new ResponseData<>(certificateRepository.save(certificate), "Certificate successfully created");
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
-        }
     }
 
 }

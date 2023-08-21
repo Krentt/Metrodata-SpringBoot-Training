@@ -1,11 +1,13 @@
 package com.metrodata.services;
 
+import com.metrodata.entities.Certificate;
 import com.metrodata.entities.SessionDetail;
 import com.metrodata.entities.Speaker;
 import com.metrodata.entities.models.ResponseData;
 import com.metrodata.entities.models.SessionData;
 import com.metrodata.entities.models.SessionDetailData;
 import com.metrodata.entities.models.SpeakerData;
+import com.metrodata.repositories.CertificateRepository;
 import com.metrodata.repositories.SessionDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,11 +20,13 @@ import java.util.List;
 public class SessionDetailService {
     private SessionDetailRepository sessionDetailRepository;
     private SessionService sessionService;
+    private CertificateRepository certificateRepository;
 
     @Autowired
-    public SessionDetailService(SessionDetailRepository sessionDetailRepository, SessionService sessionService){
+    public SessionDetailService(SessionDetailRepository sessionDetailRepository, SessionService sessionService, CertificateRepository certificateRepository){
         this.sessionDetailRepository = sessionDetailRepository;
         this.sessionService = sessionService;
+        this.certificateRepository = certificateRepository;
     }
 
     public List<SessionDetail> getAllSessionDetail() {
@@ -40,6 +44,14 @@ public class SessionDetailService {
             sessionDetail.setCapacity(sessionDetailData.getCapacity());
             sessionDetail.setDescription(sessionDetailData.getDescription());
             sessionDetail.setSession(sessionService.getSessionById(sessionDetailData.getSessionId()));
+
+            Certificate certificate = new Certificate();
+            certificate.setCertificateUrl(sessionDetailData.getCertificateUrl());
+            certificate.setSessionDetail(sessionDetail);
+            certificateRepository.save(certificate);
+
+            sessionDetail.setCertificate(certificate);
+
             return new ResponseData<>(sessionDetailRepository.save(sessionDetail), "Session Detail successfully created");
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
@@ -53,6 +65,11 @@ public class SessionDetailService {
             sessionDetail.setCapacity(sessionDetailData.getCapacity());
             sessionDetail.setDescription(sessionDetail.getDescription());
             sessionDetail.setSession(sessionService.getSessionById(sessionDetailData.getSessionId()));
+
+            Certificate certificate = certificateRepository.getReferenceById(id);
+            certificate.setCertificateUrl(sessionDetailData.getCertificateUrl());
+            certificateRepository.save(certificate);
+
             return new ResponseData<>(sessionDetailRepository.save(sessionDetail), "Session Detail successfully updated");
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());

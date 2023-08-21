@@ -44,6 +44,6 @@ public class Session {
     private Event event;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "session", fetch = FetchType.EAGER)
     private List<SessionDetail> listSessionDetails;
 }
