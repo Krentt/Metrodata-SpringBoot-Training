@@ -35,6 +35,6 @@ public class Speaker {
     @JoinColumn(name = "sponsor")
     private Sponsor sponsor;
 
-    @OneToMany(mappedBy = "speaker")
+    @OneToMany(mappedBy = "speaker", fetch = FetchType.EAGER)
     private List<SessionSpeaker> sessionSpeakerList;
 }
