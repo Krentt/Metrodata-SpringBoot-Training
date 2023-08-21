@@ -43,6 +43,7 @@ public class Session {
     @JoinColumn(name = "event_id")
     private Event event;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL)
     private List<SessionDetail> listSessionDetails;
 }
