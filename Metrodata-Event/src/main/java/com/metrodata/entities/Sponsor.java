@@ -1,6 +1,7 @@
 package com.metrodata.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.metrodata.entities.enums.SponsorCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,7 +36,8 @@ public class Sponsor {
     @JoinColumn(name = "event_id")
     private Event event;
 
-    @OneToMany(mappedBy = "sponsor", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "sponsor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Speaker> speakerList;
 
 }

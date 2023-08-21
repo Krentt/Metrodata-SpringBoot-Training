@@ -1,5 +1,6 @@
 package com.metrodata.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class Speaker {
     @Column(length = 100, nullable = false)
     private String company;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "sponsor")
     private Sponsor sponsor;
