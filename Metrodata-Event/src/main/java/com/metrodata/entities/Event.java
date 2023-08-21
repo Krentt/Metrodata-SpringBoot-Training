@@ -65,6 +65,7 @@ public class Event {
     @Column(nullable = false)
     private Boolean status;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
     private List<Sponsor> sponsorList;
 

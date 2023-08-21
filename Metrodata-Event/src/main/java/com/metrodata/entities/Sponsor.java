@@ -1,5 +1,6 @@
 package com.metrodata.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.metrodata.entities.enums.SponsorCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,6 +30,7 @@ public class Sponsor {
     @Column(nullable = false)
     private SponsorCategory category;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
