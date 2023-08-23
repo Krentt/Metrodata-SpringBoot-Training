@@ -21,4 +21,9 @@ public class EmailController {
     public EmailData sendEmailwithHTML(@RequestBody EmailData emailData) {
         return emailService.sendMailHTML(emailData);
     }
+
+    @PostMapping("email-attach")
+    public EmailData sendEmailwithHTMLAttachment(@RequestBody EmailData emailData) {
+        return emailService.sendMailHTMLAttachment(emailData);
+    }
 }

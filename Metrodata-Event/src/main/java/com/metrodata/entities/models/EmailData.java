@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class EmailData {
-    private String to, subject, body;
+    private String to, subject, body, attachment;
 }
