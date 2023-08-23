@@ -37,7 +37,7 @@ public class EmailService {
         }
     }
 
-    public EmailData sendMailWithHTML(Context context, EmailData emailData){
+    public void sendMailWithHTML(Context context, EmailData emailData){
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -47,32 +47,14 @@ public class EmailService {
             helper.setTo(emailData.getTo());
             helper.setSubject(emailData.getSubject());
             helper.setText(body, true);
+
+            if (emailData.getAttachment() != null){
+                FileSystemResource file = new FileSystemResource(new File(emailData.getAttachment()));
+                helper.addAttachment("image.jpg",file);
+            }
 
             mailSender.send(message);
             System.out.println("Mail send...");
-            return emailData;
-        } catch (Exception e){
-            throw new RuntimeException(e);
-        }
-    }
-
-    public EmailData sendMailWithAttachment(Context context, EmailData emailData){
-        try {
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            String body = templateEngine.process("email-sender", context);
-
-            helper.setFrom("thebesestgt@gmail.com");
-            helper.setTo(emailData.getTo());
-            helper.setSubject(emailData.getSubject());
-            helper.setText(body, true);
-
-            FileSystemResource file = new FileSystemResource(new File(emailData.getAttachment()));
-            helper.addAttachment("image.jpg",file);
-
-            mailSender.send(message);
-            System.out.println("Mail with attachment send...");
-            return emailData;
         } catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -85,16 +67,6 @@ public class EmailService {
         context.setVariable("body", emailData.getBody());
 
         sendMailWithHTML(context, emailData);
-        return emailData;
-    }
-
-    public EmailData sendMailHTMLAttachment(EmailData emailData){
-        Context context = new Context();
-        context.setVariable("to", emailData.getTo());
-        context.setVariable("subject",  emailData.getSubject());
-        context.setVariable("body", emailData.getBody());
-
-        sendMailWithAttachment(context, emailData);
         return emailData;
     }
 }
