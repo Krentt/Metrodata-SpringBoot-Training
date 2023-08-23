@@ -1,6 +1,7 @@
 package com.metrodata.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.metrodata.entities.enums.Occupation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -39,7 +40,7 @@ public class Participant {
     @Column(nullable = false)
     private Occupation occupation;
 
-    @JsonBackReference
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;

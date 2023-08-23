@@ -48,7 +48,7 @@ public class SessionDetailService {
             Certificate certificate = new Certificate();
             certificate.setCertificateUrl(sessionDetailData.getCertificateUrl());
             certificate.setSessionDetail(sessionDetail);
-            certificateRepository.save(certificate);
+//            certificateRepository.save(certificate);
 
             sessionDetail.setCertificate(certificate);
 

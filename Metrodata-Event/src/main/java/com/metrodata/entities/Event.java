@@ -67,7 +67,6 @@ public class Event {
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
     private List<Sponsor> sponsorList;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
     private List<Participant> listParticipants;
 
