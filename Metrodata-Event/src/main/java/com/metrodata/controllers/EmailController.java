@@ -17,8 +17,8 @@ public class EmailController {
         return emailService.sendEmail(emailData);
     }
 
-//    @PostMapping("email-html")
-//    public EmailData sendEmailwithHTML(@RequestBody EmailData emailData) {
-//        return emailService.sendMailHTML(emailData);
-//    }
+    @PostMapping("email-html")
+    public EmailData sendEmailwithHTML(@RequestBody EmailData emailData) {
+        return emailService.sendMailHTML(emailData);
+    }
 }
