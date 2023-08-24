@@ -30,6 +30,7 @@ public class UserService {
             String subject = jwtUtil.extractUsername(loginResponse.getToken());
             String newAccessToken = jwtUtil.generateToken(loginResponse.getToken(), subject);
             String refreshToken = jwtUtil.generateRefreshToken(loginResponse.getToken(), subject);
+            setRefreshTokenToCookie(refreshToken, response);
 
             result.put("token", newAccessToken);
             result.put("exp", new Date(System.currentTimeMillis() + 604800000));
